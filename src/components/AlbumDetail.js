@@ -1,11 +1,11 @@
 import React from 'react';
-import {View,Text,Image} from 'react-native';
+import {View,Text,Image,Linking} from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button'
 // functional component, only for displaying purposes
 const AlbumDetail =({album})=>{
-    const {title,artist,thumbnail_image,image} = album;
+    const {title,artist,thumbnail_image,image,url} = album;
     return(
         <Card>
             <CardSection>
@@ -24,7 +24,9 @@ const AlbumDetail =({album})=>{
                 <Image source={{uri:image}} style={styles.imageStyle} />
             </CardSection>
             <CardSection>
-                <Button onPress={()=>console.log(title)} />
+                <Button onPress={()=>Linking.openURL(url)}>
+                    Buy Now
+                </Button>
             </CardSection>
         </Card>
     )
